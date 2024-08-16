@@ -185,26 +185,25 @@ footer {
 }
 
 @media (max-width: 768px) {
-}
-
-body {
-    height: 100%;
-    overflow: auto;
-}
-
-header {
-    flex-direction: column;
-    text-align: center;
-}
-
-main {
-    flex-direction: column;
-}
-
-nav {
-    border-bottom: 2px solid #ccc;
-}
-
-.card-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    body {
+        height: 100%;
+        overflow: auto;
+    }
+    
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    main {
+        flex-direction: column;
+    }
+    
+    nav {
+        border-bottom: 2px solid #ccc;
+    }
+    
+    .card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
 }
