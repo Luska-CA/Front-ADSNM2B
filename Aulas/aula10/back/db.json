@@ -1,0 +1,19 @@
+{
+  "contatos": [
+    {
+      "id": "ad8d",
+      "nome": "eu",
+      "telefone": "8888-8888"
+    },
+    {
+      "id": "edf3",
+      "nome": "eu",
+      "telefone": "8888-8888"
+    },
+    {
+      "id": "7b47",
+      "nome": "eu",
+      "telefone": "8888-8888"
+    }
+  ]
+}
