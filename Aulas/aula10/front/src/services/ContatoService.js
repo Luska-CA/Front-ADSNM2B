@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const url = import.meta.env.VITE_URL_API;
+
 function carregarContatos() {
   const dados = [];
   axios
@@ -10,11 +12,14 @@ function carregarContatos() {
 }
 
 function criarContato(contato) {
-  axios
-    .post(import.meta.env.VITE_URL_API, contato)
-    .then((response) => (contato.id = response.id))
-    .catch((error) => new Error("Deu ruim!"));
-  return contato;
+  return axios
+    .post(url, contato)
+    .then((response) => {
+      return { sucesso: true, dados: response.data };
+    })
+    .catch((error) => {
+      return { sucesso: false, mensagem: error.message };
+    });
 }
 
 function atualizarContato(contato) {}

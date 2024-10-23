@@ -1,17 +1,18 @@
-import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { carregarContatos, criarContato } from './services/ContatoService'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Listar from "./pages/Listar";
+import Novo from "./pages/Novo";
+import Editar from "./pages/Editar";
 
 function App() {
-  useEffect(()=>{
-    criarContato({nome: "eu", telefone: "8888-8888"});
-    console.log(carregarContatos())
-  })
   return (
-    <></>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Listar />} />
+        <Route path="/novo" element={<Novo />} />
+        <Route path="/editar/:id" element={<Editar />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
-export default App
+export default App;
