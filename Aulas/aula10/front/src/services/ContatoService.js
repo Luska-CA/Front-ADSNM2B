@@ -4,11 +4,14 @@ const url = import.meta.env.VITE_URL_API;
 
 function carregarContatos() {
   const dados = [];
-  axios
-    .get(import.meta.env.VITE_URL_API)
-    .then((response) => dados.push(...response.data))
-    .catch((error) => new Error("Deu ruim!"));
-  return dados;
+  return axios
+    .get(url)
+    .then((response) => {
+      return { sucesso: true, dados: response.data };
+    })
+    .catch((error) => {
+      return { sucesso: false, mensagem: error.message };
+    });
 }
 
 function criarContato(contato) {
@@ -24,8 +27,26 @@ function criarContato(contato) {
 
 function atualizarContato(contato) {}
 
-function removerContato(contato) {}
+function removerContato(id) {
+  return axios
+    .delete(`${url}/${id}`)
+    .then((response) => {
+      return { sucesso: true, dados: response.data };
+    })
+    .catch((error) => {
+      return { sucesso: false, mensagem: error.message };
+    });
+}
 
-function obterContato(contato) {}
+function obterContato(id) {
+  return axios
+    .get(`${url}/${id}`)
+    .then((response) => {
+      return { sucesso: true, dados: response.data };
+    })
+    .catch((error) => {
+      return { suceso: false, mensagem: error.message };
+    });
+}
 
-export { carregarContatos, criarContato };
+export { carregarContatos, criarContato, removerContato, obterContato };
