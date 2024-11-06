@@ -1,23 +1,28 @@
-import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useContext } from "react";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Perfil from "./pages/Perfil";
 import Erro404 from "./pages/Erro404";
+import Registrar from "./pages/Registrar";
+import { AuthContext } from "./contexts/AuthContext";
 
 function App() {
-  const [logado, setLogado] = useState(false);
+  const { usuario } = useContext(AuthContext);
 
   return (
     <BrowserRouter>
       <Routes>
-        {logado ? (
+        {usuario.logado ? (
           <>
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/perfil" element={<Perfil />} />
           </>
         ) : (
-          <Route path="/" element={<Login onEntrar={setLogado} />} />
+          <>
+            <Route path="/" element={<Login />} />
+            <Route path="/registrar" element={<Registrar />} />
+          </>
         )}
         <Route path="/*" element={<Erro404 />} />
       </Routes>
